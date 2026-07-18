@@ -3,9 +3,10 @@
 #
 #  เมนู 1 และ 2 เขียนให้ดูเป็นตัวอย่างแล้ว
 #  หน้าที่ของหัวหน้า: เขียนเมนู 3-6 โดยเรียกใช้ฟังก์ชันที่เพื่อนเขียน
-#  pattern เดียวกันทุกเมนู:  รับ input -> เรียกฟังก์ชัน -> print ผลลัพธ์
+#  pattern เดียวกันทุกเม1นู:  รับ input -> เรียกฟังก์ชัน -> print ผลลัพธ์
 # =====================================================
 from data import weapons_catalog
+from data import family_members
 from personnel.add_member import add_member
 from personnel.show_members import show_members
 from personnel.search_member import search_member
@@ -13,7 +14,7 @@ from personnel.remove_member import remove_member
 from weapon_shop.show_catalog import show_catalog
 from weapon_shop.equip_item import equip_item
 from missions.send_mission import send_mission
-from personnel.add_member import 
+
 def main():
     while True:
         print("\n=== MAFIA MANAGEMENT SYSTEM ===")
@@ -29,23 +30,20 @@ def main():
 
         # ---------- เมนู 1 (ตัวอย่าง เขียนให้ดูแล้ว) ----------
         if choice == '1':
-            print(add_member)
-            print = add_member(name, age, power, money)
-
-            if new_member is None:
-                print("!! add_member ยังไม่ถูกเขียน (ไปเขียนใน personnel/add_member.py)")
-            else:
-                print(f"เพิ่ม {new_member['name']} ในตำแหน่ง {new_member['role']} เรียบร้อยแล้ว")
-
+            print("\n--- เพิ่มลูกน้องใหม่ ---")
+            add_member()
         # ---------- เมนู 2 (ตัวอย่าง เขียนให้ดูแล้ว) ----------
         elif choice == '2':
             print("\n--- รายชื่อลูกน้องทั้งหมด ---")
-            show_members()
+            print(family_members)
 
         # ---------- เมนู 3 (TODO) ----------
         elif choice == '3':
             print("\n--- ค้นหาประวัติ ---")
             # TODO:
+            sed = str(input(" กรอกชื่อค้น : "))
+            search_member(sed)
+
             # 1) รับชื่อที่ต้องการค้นหาด้วย input()
             # 2) เรียก search_member(ชื่อ) แล้วเก็บผลไว้ในตัวแปร
             # 3) ถ้าผลไม่ใช่ None -> print ข้อมูล (ชื่อ, ตำแหน่ง, เงิน, อาวุธ)
@@ -55,20 +53,12 @@ def main():
         # ---------- เมนู 4 (TODO) ----------
         elif choice == '4':
             print("\n--- สั่งเก็บลูกน้อง ---")
-            target_name = input("Enter member name  :  ")
-            print(remove_member(target_name))
-            print(family_members)
-            # TODO:
-            # 1) รับชื่อคนที่ต้องการลบด้วย input()
-            # 2) เรียก remove_member(ชื่อ) แล้วเก็บผลไว้ (ได้ True หรือ False)
-            # 3) True  -> print สั่งเก็บเรียบร้อย
-            #    False -> print "ไม่พบชื่อในระบบ"
-            
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
-
+            xyz = input("กรอกชื่อที่ต้องการสั่งเก็บ : ") 
+            remove_member(xyz)
         # ---------- เมนู 5 (TODO) ----------
         elif choice == '5':
             print("\n=== คลังอาวุธ ===")
+            show_catalog()
             # TODO:
             # 1) เรียก show_catalog() แสดงรายการอาวุธ
             # 2) รับรหัสอาวุธ แล้วหาอาวุธด้วย weapons_catalog.get(รหัส)
@@ -84,21 +74,6 @@ def main():
         # ---------- เมนู 6 (TODO ของหัวหน้า — OPTIONAL) ----------
         elif choice == '6':
             print("\n--- ส่งไปทำภารกิจ ---")
-            name = input("Enter member name  :  ")
-            person = search_member(name)
-            
-            if person is None:
-                print("ไม่พบรายชื่อลูกน้องคนนี้ในระบบ")
-            else:
-                result = send_mission(person)
-
-                if result["status"]:
-                    print("ภารกิจสำเร็จ")
-                    print("เงินรางวัล : ", result["reward"])
-                    print("ยอดเงินปัจจุบัน : ", person[""])
-                else:
-                    remove_member(person["name"])
-                    print("ภารกิจล้มเหลว")
             # TODO:
             # 1) รับชื่อลูกน้อง แล้วหาคนด้วย search_member(ชื่อ)
             #    ถ้าได้ None -> print "ไม่พบรายชื่อลูกน้องคนนี้ในระบบ" (จบเมนูนี้เลย)
