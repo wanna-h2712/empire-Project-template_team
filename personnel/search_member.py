@@ -5,6 +5,11 @@
 from data import family_members
 
 def search_member(target_name):
+    for person in family_members :
+        if target_name.lower() == person["name"].lower() :
+            return person["name"]
+        else :
+            return None
 #   - หาคนใน family_members ที่ชื่อตรงกับ target_name (ไม่สนตัวพิมพ์ใหญ่/เล็ก)
 #   - เจอ -> return dict ของคนนั้น | ไม่เจอ -> return None
     # TODO: เขียนโค้ดตรงนี้
