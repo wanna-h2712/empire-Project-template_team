@@ -4,14 +4,14 @@
 # =====================================================
 from data import family_members
 
-def add_member(name, age, power, money):
+def add_member():
     equipment = "None"
     name = input("enter your name : ")
     age = int(input("enter your age : "))
     power = int(input("enter your power : "))
     money = float(input("enter your money : "))
 
-    # family_members = [{"name" : name, "age" : age, "power": power, "money" = money}]
+    family_members = [{"name" : name, "age" : age, "power": power, "money" : money}]
 
     if power >= 8 and money >=100000:
          role = "Hitman"
@@ -22,10 +22,11 @@ def add_member(name, age, power, money):
     else :
         role = "slave"
 
-    dict_members = [{"name" : name, "age" : age, "power": power, "role": role, "money": money,"equipment" : equipment }]
+    dict_members = [{"name" : name, "age" : age, "power": power, "role": role, "money": money,"equipment" : "ไม้มี" }]
     
     family_members.append(dict_members)
-    return family_members
+    print(dict_members)
+    return dict_members
 #   - คำนวณ role: power >= 8 -> "Hitman" | money >= 1000000 -> "Sponsor" | นอกนั้น -> "Slave"
 #   - สร้าง dict สมาชิกใหม่ (key: name, age, role, power, money, equipment เริ่มต้น "ไม่มี")
 #   - เพิ่มเข้า family_members แล้ว return dict นั้น
