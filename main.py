@@ -60,11 +60,15 @@ def main():
         # ---------- เมนู 4 (TODO) ----------
         elif choice == '4':
             print("\n--- สั่งเก็บลูกน้อง ---")
+            target_name = input("Enter member name  :  ")
+            print(remove_member(target_name))
+            print(family_members)
             # TODO:
             # 1) รับชื่อคนที่ต้องการลบด้วย input()
             # 2) เรียก remove_member(ชื่อ) แล้วเก็บผลไว้ (ได้ True หรือ False)
             # 3) True  -> print สั่งเก็บเรียบร้อย
             #    False -> print "ไม่พบชื่อในระบบ"
+            
             print("!! เมนูนี้ยังไม่ถูกเชื่อม")
 
         # ---------- เมนู 5 (TODO) ----------
@@ -85,6 +89,21 @@ def main():
         # ---------- เมนู 6 (TODO ของหัวหน้า — OPTIONAL) ----------
         elif choice == '6':
             print("\n--- ส่งไปทำภารกิจ ---")
+            name = input("Enter member name  :  ")
+            person = search_member(name)
+            
+            if person is None:
+                print("ไม่พบรายชื่อลูกน้องคนนี้ในระบบ")
+            else:
+                result = send_mission(person)
+
+                if result["status"]:
+                    print("ภารกิจสำเร็จ")
+                    print("เงินรางวัล : ", result["reward"])
+                    print("ยอดเงินปัจจุบัน : ", person[""])
+                else:
+                    remove_member(person["name"])
+                    print("ภารกิจล้มเหลว")
             # TODO:
             # 1) รับชื่อลูกน้อง แล้วหาคนด้วย search_member(ชื่อ)
             #    ถ้าได้ None -> print "ไม่พบรายชื่อลูกน้องคนนี้ในระบบ" (จบเมนูนี้เลย)
