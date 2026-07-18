@@ -13,7 +13,7 @@ from personnel.remove_member import remove_member
 from weapon_shop.show_catalog import show_catalog
 from weapon_shop.equip_item import equip_item
 from missions.send_mission import send_mission
-
+from personnel.add_member import 
 def main():
     while True:
         print("\n=== MAFIA MANAGEMENT SYSTEM ===")
@@ -29,13 +29,8 @@ def main():
 
         # ---------- เมนู 1 (ตัวอย่าง เขียนให้ดูแล้ว) ----------
         if choice == '1':
-            print("\n--- เพิ่มลูกน้องใหม่ ---")
-            name = input("ชื่อ: ")
-            age = int(input("อายุ: "))
-            power = int(input("ความโหด (1-10): "))
-            money = float(input("เงินส่วย: "))
-
-            new_member = add_member(name, age, power, money)
+            print(add_member)
+            print = add_member(name, age, power, money)
 
             if new_member is None:
                 print("!! add_member ยังไม่ถูกเขียน (ไปเขียนใน personnel/add_member.py)")
